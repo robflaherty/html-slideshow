@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="resources/styles.css" />
+<link rel="stylesheet" href="content/css/styles.css" />
+<title>Example Slideshow</title>
+</head>
+<body>
+<header>
+    <h1>Example Slide Show</h1>
+    <nav>
+        <ul>
+            <li><button id="prev-btn" title="Previous slide">Previous Slide</button></li>
+            <li><span id="slide-number"></span><span id="slide-total"></span></li>
+            <li><button id="next-btn" title="Next Slide">Next Slide</button></li>
+        </ul>
+    </nav>
+</header>
+<div id="deck">
+    <section>
+        <hgroup>
+            <h1>Slide</h1>
+            <h2>Subheading</h2>
+        </hgroup>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <ul>
+            <li class="action">Item</li>
+            <li class="action">Item</li>
+            <li class="action">Item</li>
+            <li class="action">Item</li>
+        </ul>
+    </section>
+    <section>
+        <hgroup>
+            <h1>Slide</h1>
+            <h2>Subheading</h2>
+        </hgroup>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </section>
+	<section>
+        <hgroup>
+            <h1>Slide</h1>
+            <h2>Subheading</h2>
+        </hgroup>
+		<img src="content/images/cached-request.png" alt="Request cached in memcached" class="center" />
+    </section>
+    <section>
+        <hgroup>
+            <h1>Slide</h1>
+            <h2>newSlide Event</h2>
+        </hgroup>
+        <p></p>
+            <pre>
+$('html').bind('newSlide', function(e, data){
+    if(data == 3) {
+        $("#slide3 p").html("This is a custom event.")
+    }
+});
+            </pre>
+            <p></p>
+    </section>
+    <section>
+        <hgroup>
+            <h1>Slide</h1>
+            <h2>Subheading</h2>
+        </hgroup>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </section> 
+</div>
+<!-- /deck -->
+<script src="resources/jquery-1.4.2.min.js"></script>
+<script src="resources/htmlSlides.js"></script>
+</body>
+</html>
