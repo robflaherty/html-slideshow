@@ -1,6 +1,8 @@
 /*
  * HTML Slideshow
  * Author: Rob Flaherty | rob@ravelrumba.com
+ * Copyright (c) 2010 Rob Flaherty 
+ * MIT Licensed: http://www.opensource.org/licenses/mit-license.php
  */
  
 (function() {
@@ -49,7 +51,7 @@
         
     };
    
-    //Main functions
+    //Main "change slide" function
     function changeSlide(id) {
         var slideID = '#slide' + id;        
         deck.find('.slide-selected').removeClass('slide-selected');
@@ -75,6 +77,7 @@
         }
     }
     
+    //Next slide
     function prevSlide() {
         if (currentSlide > 1) {
             currentSlide--;
@@ -82,6 +85,7 @@
         }     
     }
     
+    //Previous slide
     function nextSlide() {
         if (currentSlide < slideCount) {
             currentSlide++;
@@ -89,6 +93,7 @@
         }
     }
     
+    //Reveal "actions"
     function showActions() {        
         var actions = $('.slide-selected').find('.action');            
         
@@ -124,7 +129,7 @@
         }
     }    
     
-    //Control events
+    //Bind control events
     prevButton.bind('click', prevSlide);
     nextButton.bind('click', nextSlide);
     $('html').bind('keydown', keyControls);

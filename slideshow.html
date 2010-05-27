@@ -18,31 +18,78 @@
     </nav>
 </header>
 <div id="deck">
+	<section>
+        <hgroup>
+            <h1>Hello, interwebs explorer.</h1>
+            <h2>How to use this thing</h2>
+			<p>Press the right arrow, down arrow, or spacebar to advance; press the left arrow or up arrow to move backward.</p>
+			<p>You can also click the left and right arrows in the control bar at the top.</p>
+        </hgroup>
+    </section>
     <section>
         <hgroup>
-            <h1>Slide</h1>
-            <h2>Subheading</h2>
+            <h1>Intraslide animation</h1>
+            <h2>I'm calling these "actions"</h2>
         </hgroup>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>You can hide/reveal content within the slides by giving something a class of "action". Actions are revealed in the order in which they occur in the HTML. Advancing to the next slide will first reveal actions on the page if they exist.</p>
+		<pre>
+&lt;p class=&quot;action&quot;&gt;This will be hidden when the slide loads&lt;/p&gt;
+		</pre>	
         <ul>
-            <li class="action">Item</li>
-            <li class="action">Item</li>
-            <li class="action">Item</li>
-            <li class="action">Item</li>
+            <li class="action">Bullet point</li>
+            <li class="action">Another bullet point</li>
+            <li class="action">Yet another bullet point</li>
+            <li class="action">You get the idea</li>
         </ul>
     </section>
     <section>
         <hgroup>
-            <h1>Slide</h1>
-            <h2>Subheading</h2>
+            <h1>Custom events</h1>
+            <h2>These may or may not be useful</h2>
         </hgroup>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>When a new slide is loaded, a "newSlide" event is fired, containing the number of the slide.</p>
+		<p>There's also an event triggered when a new "action" is revealed. (Take look at your console.)</p>
+		<p></p>
+		<pre>
+//Example usage
+$(&#x27;html&#x27;).bind(&#x27;newSlide&#x27;, function(e,id) { console.log(id) });
+		</pre>
+    </section>
+	<section>
+        <hgroup>
+            <h1>Building slides</h1>
+            <h2>It's easy</h2>
+        </hgroup>
+        <p>Each slide goes within a <code>section</code> element, like this:</p>
+		<pre>
+&lt;section&gt;
+    &lt;hgroup&gt;
+        &lt;h1&gt;Your heading&lt;/h1&gt;
+        &lt;h2&gt;Your subheading&lt;/h2&gt;
+    &lt;/hgroup&gt;
+    &lt;p&gt;All your slide content...&lt;/p&gt;
+&lt;/section&gt;
+		</pre>
+		<p>You don't have to worry about numbering the slides. The script will count the number of <code>section</code> elements and give each one a numbered ID on page load.</p>
+    </section>
+    <section>
+        <hgroup>
+            <h1>Other details</h1>
+            <h2>Small stuff</h2>
+        </hgroup>
+		<p>The hash updates with each slide.</p>
+		<p>The slideshow itself has 3 dependencies: jQuery, htmlSlides.js, and a stylesheet.</p>
+		<p>The slide script has one option, the option to hide the menu bar at the top:</p>
+		<pre>
+sliderInit({hideMenu: true});
+		</pre>
     </section>
 	<section>
         <hgroup>
             <h1>Slide</h1>
             <h2>Subheading</h2>
         </hgroup>
+        <p>Big ups to <a href="http://edward.oconnor.cx/2009/08/marking-up-a-slideshow-in-html5" title="Marking up a slideshow in HTML5 &#8212; Edward O&#8217;Connor">Edward O'Connor</a> for </p>
 		<img src="content/images/cached-request.png" alt="Request cached in memcached" class="center" />
     </section>
     <section>
@@ -71,5 +118,10 @@ $('html').bind('newSlide', function(e, data){
 <!-- /deck -->
 <script src="resources/jquery-1.4.2.min.js"></script>
 <script src="resources/htmlSlides.js"></script>
+<script>
+//This is just to demo the custom events
+$('html').bind('newSlide', function(e,id) { console.log('New slide event, slide number ' + id)});
+$('html').bind('newAction', function(e,id) { console.log('New action event, action number ' + id)});
+</script>
 </body>
 </html>
