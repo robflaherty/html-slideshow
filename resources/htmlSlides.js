@@ -131,7 +131,7 @@
     
     //Bind control events
     prevButton.bind('click', prevSlide);
-    nextButton.bind('click', nextSlide);
+    nextButton.bind('click', showActions);
     $('html').bind('keydown', keyControls);
     
     //Do our business when the DOM is ready
