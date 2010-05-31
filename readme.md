@@ -7,3 +7,4 @@ This is a mini web app for people who'd rather build slides with HTML and CSS th
 ## To do list
 * Add IE support
 * Add touch UI support
+* Add WAI-ARIA attributes
