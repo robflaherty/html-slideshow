@@ -25,7 +25,7 @@
         });
 
         //Set total slide count in header
-        $('#slide-total').html('/' + slideCount);
+        $('#slide-total').html(slideCount);
         
         //Check for hash and validate value    
         if (slideHash && (parseInt((slideHash.substring(1)), 10) <= slideCount)) {
