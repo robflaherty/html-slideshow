@@ -15,14 +15,15 @@ var htmlSlides = {
   prevButton: $('#prev-btn'),
   nextButton: $('#next-btn'),
   slideNumber: $('#slide-number'),
-  that: this,
       
   init: function(options) {    
     var defaultSettings = {
-      hideMenu: false,
+      hideToolbar: false,
     },
   
-    settings = $.extend({}, this.defaultSettings, options);
+    settings = $.extend({}, this.defaultSettings, options),
+    
+    base = this;
     
     //Add ids and classes to slides
     $('#deck > section').each(function(index, el) {
@@ -39,8 +40,8 @@ var htmlSlides = {
       this.currentSlide = this.slideHash.replace('#', '');
     }
 
-    //Hide menubar if hideMenu === true
-    if (settings.hideMenu === true) {
+    //Hide toolbar if hideToolbar === true
+    if (settings.hideToolbar === true) {
       setTimeout(function(){
         $('header').fadeTo(300, 0);
       }, 1500);
@@ -56,9 +57,9 @@ var htmlSlides = {
     }
       
     //Bind control events
-    this.prevButton.bind('click', this.prevSlide);
-    this.nextButton.bind('click', this.showActions);
-    $('html').bind('keydown', this.keyControls);
+    this.prevButton.bind('click', $.proxy(base, 'prevSlide'));
+    this.nextButton.bind('click', $.proxy(base, 'showActions'));
+    $('html').bind('keydown', $.proxy(base, 'keyControls'));
       
     //Set initial slide
     this.changeSlide(this.currentSlide);
@@ -73,7 +74,7 @@ var htmlSlides = {
     this.deck.find('.slide-selected').removeClass('slide-selected');
     $(slideID).addClass('slide-selected');
       
-    //Update menu bar
+    //Update toolbar
     this.slideNumber.html(this.currentSlide);
     
     //Update hash      
@@ -95,9 +96,9 @@ var htmlSlides = {
   
   //Next slide
   prevSlide: function() {
-    if (htmlSlides.currentSlide > 1) {
-      htmlSlides.currentSlide--;
-      htmlSlides.changeSlide(htmlSlides.currentSlide);
+    if (this.currentSlide > 1) {
+      this.currentSlide--;
+      this.changeSlide(this.currentSlide);
     }     
   },
   
@@ -124,7 +125,7 @@ var htmlSlides = {
       //Trigger newAction event
       $('html').trigger("newAction", actionOns.length );
     } else {
-      htmlSlides.nextSlide();
+      this.nextSlide();
     }
   },
   
@@ -134,13 +135,13 @@ var htmlSlides = {
       //Left and up keys
       case 37:
       case 38:
-        htmlSlides.prevSlide();
+        this.prevSlide();
       break;
       //Right, down, and spacebar keys
       case 32:
       case 39:
       case 40:
-        htmlSlides.showActions();
+        this.showActions();
       break;
     }
   }

@@ -1,67 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<link rel="stylesheet" href="resources/styles.css" />
-<link rel="stylesheet" href="content/css/styles.css" />
-<title>Example Slideshow</title>
+  <meta charset="utf-8" />
+  
+  <!-- These are some core styles the slideshow app requires -->
+  <link rel="stylesheet" href="resources/styles.css" />
+  
+  <!-- These are the styles you'll add to make the slides look great -->
+  <link rel="stylesheet" href="content/css/styles.css" />
+  
+  <title>Example Slideshow</title>
 </head>
 <body>
-<header>
-  <h1>Example Slide Show</h1>
-  <nav>
-    <ul>
-      <li><button id="prev-btn" title="Previous slide">Previous Slide</button></li>
-      <li><span id="slide-number"></span>/<span id="slide-total"></span></li>
-      <li><button id="next-btn" title="Next Slide">Next Slide</button></li>
-    </ul>
-  </nav>
-</header>
-<div id="deck">
-  <section>
-    <hgroup>
-      <h1>Hello, interwebs explorer.</h1>
-      <h2>How to use this thing</h2>
-    </hgroup>
-    <p>Press the right arrow, down arrow, or spacebar to advance; press the left arrow or up arrow to move backward.</p>
-		<p>You can also click the left and right arrows in the control bar at the top.</p>
-  </section>
-  <section>
-    <hgroup>
-      <h1>Intraslide animation</h1>
-      <h2>I'm calling these "actions"</h2>
-    </hgroup>
-      <p>You can hide/reveal content within the slides by giving something a class of "action". Actions are revealed in the order in which they occur in the HTML. Advancing to the next slide will first reveal actions on the page if they exist.</p>
-	  <pre>
+  <header>
+    <h1>Example Slide Show</h1>
+    <nav>
+      <ul>
+        <li><button id="prev-btn" title="Previous slide">Previous Slide</button></li>
+        <li><span id="slide-number"></span>/<span id="slide-total"></span></li>
+        <li><button id="next-btn" title="Next Slide">Next Slide</button></li>
+      </ul>
+    </nav>
+  </header>
+  <div id="deck">
+    
+    <!-- Begin slides -->
+    <section>
+      <hgroup>
+        <h1>Hello, interwebs explorer.</h1>
+        <h2>How to use this thing</h2>
+      </hgroup>
+      <p>Press the right arrow, down arrow, or spacebar to advance; press the left arrow or up arrow to move backward.</p>
+  		<p>You can also click the left and right arrows in the control bar at the top.</p>
+    </section>
+    <section>
+      <hgroup>
+        <h1>Intraslide animation</h1>
+        <h2>I'm calling these "actions"</h2>
+      </hgroup>
+        <p>You can hide/reveal content within the slides by giving something a class of "action". Actions are revealed in the order in which they occur in the HTML. Advancing to the next slide will first reveal actions on the page if they exist.</p>
+  	  <pre>
 &lt;p class=&quot;action&quot;&gt;This will be hidden when the slide loads&lt;/p&gt;
-	  </pre>	
-    <ul>
-      <li class="action">Bullet point</li>
-      <li class="action">Another bullet point</li>
-      <li class="action">Yet another bullet point</li>
-      <li class="action">You get the idea</li>
-    </ul>
-  </section>
-  <section>
-    <hgroup>
-      <h1>Custom events</h1>
-      <h2>These may or may not be useful</h2>
-    </hgroup>
-    <p>When a new slide is loaded, a "newSlide" event is fired, containing the number of the slide.</p>
-		<p>There's also an event triggered when a new "action" is revealed. (Take look at your console.)</p>
-		<p></p>
-		<pre>
+  	  </pre>	
+      <ul>
+        <li class="action">Bullet point</li>
+        <li class="action">Another bullet point</li>
+        <li class="action">Yet another bullet point</li>
+        <li class="action">You get the idea</li>
+      </ul>
+    </section>
+    <section>
+      <hgroup>
+        <h1>Custom events</h1>
+        <h2>These may or may not be useful</h2>
+      </hgroup>
+      <p>When a new slide is loaded, a "newSlide" event is fired, containing the number of the slide.</p>
+  		<p>There's also an event triggered when a new "action" is revealed.</p>
+  		<pre>
 //Example usage
 $(&#x27;html&#x27;).bind(&#x27;newSlide&#x27;, function(e,id) { console.log(id) });
-		</pre>
-  </section>
-	<section>
-    <hgroup>
-      <h1>Building slides</h1>
-      <h2>It's easy</h2>
-    </hgroup>
-    <p>Each slide goes within a <code>section</code> element, like this:</p>
-		<pre>
+  		</pre>
+    </section>
+  	<section>
+      <hgroup>
+        <h1>Building slides</h1>
+        <h2>It's easy</h2>
+      </hgroup>
+      <p>Each slide goes within a <code>section</code> element, like this:</p>
+  		<pre>
 &lt;section&gt;
     &lt;hgroup&gt;
         &lt;h1&gt;Your heading&lt;/h1&gt;
@@ -69,38 +75,44 @@ $(&#x27;html&#x27;).bind(&#x27;newSlide&#x27;, function(e,id) { console.log(id) 
     &lt;/hgroup&gt;
     &lt;p&gt;All your slide content...&lt;/p&gt;
 &lt;/section&gt;
-		</pre>
-	  <p>You don't have to worry about numbering the slides. The script will count the number of <code>section</code> elements and give each one a numbered ID on page load.</p>
-  </section>
-  <section>
-    <hgroup>
-      <h1>Other details</h1>
-      <h2>Small stuff</h2>
-    </hgroup>
-		<p>The hash updates with each slide.</p>
-		<p>The slideshow itself has 3 dependencies: jQuery, htmlSlides.js, and a stylesheet.</p>
-		<p>The slide script has one option, the option to hide the menu bar at the top:</p>
-		<pre>
-sliderInit({hideMenu: true});
-		</pre>
-  </section>
-	<section>
-    <hgroup>
-      <h1>That's all</h1>
-    </hgroup>
-    <p>Get it at <a href="http://github.com/robflaherty/html-slideshow">github</a>.</p>
-    <p>- Rob Flaherty / <a href="http://twitter.com/ravelrumba">@ravelrumba</a> / <a href="mailto:rob@ravelrumba.com">rob@ravelrumba.com</a></p>
-  </section>
-</div>
-<!-- /deck -->
-<script src="resources/jquery-1.5.2.min.js"></script>
-<script src="resources/htmlSlides.js"></script>
-<script>
-  //Do our business when the DOM is ready for us
-  $(function() {
-    //One option: hideMenu (boolean; default = false)
-    htmlSlides.init({ hideMenu: true });
-  });
-</script>
-</body>
+  		</pre>
+  	  <p>You don't have to worry about numbering the slides. The script will count the number of <code>section</code> elements and give each one a numbered ID on page load.</p>
+    </section>
+    <section>
+      <hgroup>
+        <h1>Other details</h1>
+        <h2>Small stuff</h2>
+      </hgroup>
+  		<p>The hash updates with each slide.</p>
+  		<p>The slideshow itself has 3 dependencies: jQuery, htmlSlides.js, and a small stylesheet.</p>
+  		<p>The slide script has one option, the option to hide the toolbar at the top:</p>
+  		<pre>
+htmlSlides.init({ toolbar: true });
+  		</pre>
+    </section>
+  	<section>
+      <hgroup>
+        <h1>That's all</h1>
+      </hgroup>
+      <p>Get it at <a href="http://github.com/robflaherty/html-slideshow">github</a>.</p>
+      <p>- Rob Flaherty / <a href="http://twitter.com/ravelrumba">@ravelrumba</a> / <a href="mailto:rob@ravelrumba.com">rob@ravelrumba.com</a></p>
+    </section>
+    <!-- /End slides -->
+    
+  </div>
+  <!-- /deck -->
+  <script src="resources/jquery-1.5.2.min.js"></script>
+  <script src="resources/htmlSlides.js"></script>
+  <script>
+    //Do our business when the DOM is ready for us
+    $(function() {
+      //One little option: hideToolbar (boolean; default = false)
+      htmlSlides.init({ hideToolbar: true });
+      
+      //Optional events
+      $('html').bind('newSlide', function(e,id) { console.log('Slide Number ' + id) });
+      
+    });
+  </script>
+  </body>
 </html>
