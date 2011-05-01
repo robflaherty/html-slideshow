@@ -56,9 +56,9 @@
     <section>
       <hgroup>
         <h1>Custom events</h1>
-        <h2>These may or may not be useful</h2>
+        <h2>These may or may not be useful for you</h2>
       </hgroup>
-      <p>When a new slide is loaded, a "newSlide" event is fired, containing the number of the slide.</p>
+      <p>When a new slide is loaded, a "newSlide" event is fired. (Take a look at your console.)</p>
   		<p>There's also an event triggered when a new "action" is revealed.</p>
   		<pre>
 //Example usage
@@ -118,11 +118,21 @@ htmlSlides.init({ toolbar: true });
   <script>
     //Do our business when the DOM is ready for us
     $(function() {
+      
+      //You can trigger Javascript based on the slide number like this:
+      $('html').bind('newSlide', function(e, id) { 
+        switch(id) {
+          case 2:
+            console.log('This is the second slide.');;
+            break;
+          case 3:
+            console.log('Hello, third slide.');
+            break;
+        }
+      });
+
       //One little option: hideToolbar (boolean; default = false)
       htmlSlides.init({ hideToolbar: true });
-      
-      //Optional events
-      $('html').bind('newSlide', function(e,id) { console.log('Slide Number ' + id) });
       
     });
   </script>
