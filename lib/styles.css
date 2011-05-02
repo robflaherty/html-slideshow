@@ -31,7 +31,7 @@ a:hover { color: #3c5dc9; text-decoration:none; }
 
 /* Slider App Styles */
 section { padding: 0 30px 30px; display: none; }
-header { overflow: hidden; color: #000; background-image: -moz-linear-gradient(top, #c5c5c5, #b0b0b0); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #c5c5c5),color-stop(1, #b0b0b0)); border-top:1px solid #dcdcdc; border-bottom: 1px solid rgb(105, 105, 105); text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5); font-family: "Lucida Grande"; padding: 1px 10px; overflow:hidden; }
+header { color: #000; background-image: -moz-linear-gradient(top, #c5c5c5, #b0b0b0); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #c5c5c5),color-stop(1, #b0b0b0)); border-top:1px solid #dcdcdc; border-bottom: 1px solid rgb(105, 105, 105); text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5); font-family: "Lucida Grande"; padding: 1px 10px; overflow:hidden; z-index: 10000; position: relative; }
 header h1 { float: left; font-size: 18px;  line-height: 32px;}
 .slide-selected { display: block; }
 .action, .action-on  { display: none; }
@@ -49,12 +49,8 @@ nav button { float: left; border: 0; width: 26px; height: 25px; text-indent: -99
 .slide p { font-size: 20px; margin: 0 0 1em; }
 .slide li { list-style-type: disc; margin-left: 40px; font-size: 20px; }
 .slide pre { font-size:20px; font-family: monospace; }
-.slide hgroup {margin: 0 0 20px;}
+.slide hgroup { margin: 0 0 20px; }
 
 /* Center graphics and media content */
-.slide img, video, canvas, figure, object, embed { margin:0 auto; }
-.slide .fullscreen {
-  position: absolute; left:0; top:0;
-  width:100%;
-  z-index:-1;
-}
+.slide img, .slide video, .slide canvas, .slide figure, .slide object, .slide embed { margin:0 auto; }
+.slide .fullscreen { position: absolute; left:0; top:0; width:100%; z-index:1; }
