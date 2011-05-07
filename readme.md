@@ -30,6 +30,10 @@ $('html').bind('newSlide', function(e, id) {
   }
 });
 ```
+## Changelog
+05/07/2011 - Added swipe support for touch devices
+
+05/01/2011 - Reorganized file structure
 
 ## Demo
 [View the demo](http://www.ravelrumba.com/code/demos/html-slideshow/slideshow.html)
