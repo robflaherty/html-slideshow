@@ -30,13 +30,16 @@ $('html').bind('newSlide', function(e, id) {
   }
 });
 ```
-## Changelog
-05/07/2011 - Added swipe support for touch devices
-
-05/01/2011 - Reorganized file structure
-
 ## Demo
 [View the demo](http://www.ravelrumba.com/code/demos/html-slideshow/slideshow.html)
 
 ## Blog post
 [Read the blog post](http://www.ravelrumba.com/blog/html5-slideshow/)
+
+## Variations
+* [MVC 3 HTML5 Slideshow Presentation Site Template](https://github.com/jgable/MVC-3-HTML5-Slideshow-Presentation-Template) (by [Jacob Gable](http://jacob4u2.posterous.com/))
+
+## Changelog
+05/07/2011 - Added swipe support for touch devices
+
+05/01/2011 - Reorganized file structure
